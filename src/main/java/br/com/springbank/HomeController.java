@@ -33,7 +33,9 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		model.addAttribute("view", "index/home.jsp");
+		
+		return "dashboard";
 	}
 	
 }

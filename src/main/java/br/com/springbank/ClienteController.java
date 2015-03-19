@@ -24,7 +24,7 @@ public class ClienteController {
 		pessoaService.cadastrarCliente(cliente);
 		
 		
-		return "cliente";
+		return "cliente/listar";
 	}
 
 }

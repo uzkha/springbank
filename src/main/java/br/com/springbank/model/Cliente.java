@@ -1,15 +1,24 @@
 package br.com.springbank.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="pessoa")
+@DiscriminatorValue(value = "C")
 public class Cliente {
 	
-	private String tipo;
+	@Column
+	private String tipoCliente;
 		
 	public String getTipo() {
-		return tipo;
+		return tipoCliente;
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.tipoCliente = tipo;
 	}
 
 }

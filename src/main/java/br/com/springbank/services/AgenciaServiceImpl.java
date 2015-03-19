@@ -1,7 +1,10 @@
 package br.com.springbank.services;
 
+import org.springframework.stereotype.Service;
+
 import br.com.springbank.model.Agencia;
 
+@Service
 public class AgenciaServiceImpl implements AgenciaService {
 
 	@Override

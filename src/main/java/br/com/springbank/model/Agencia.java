@@ -3,20 +3,19 @@ package br.com.springbank.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="agencia")
 public class Agencia {
 	
-	@Id
-	@Column
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "agencia")  
-    @SequenceGenerator(name = "agencia", sequenceName = "agencia_id_seq") 
-	private int id;
+	@Id	
+	@GenericGenerator(name="agenciaid" , strategy="increment")
+	@GeneratedValue(generator="agenciaid") 
+	private Long id;
 	
 	@Column
 	private String nome;
@@ -25,10 +24,10 @@ public class Agencia {
 	private String cidade;
 
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
