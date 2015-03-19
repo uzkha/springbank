@@ -4,9 +4,9 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a href="/pacsaude/paciente/adicionar"><img
-				src="resources/img/add.png" width="24" height="24"
-				data-toggle="tooltip" title="Adicionar Paciente"></a>
+			<a href="/springbank/agencia/adicionar"><img
+				src="${pageContext.request.contextPath}/resources/img/add.png" width="24" height="24"
+				data-toggle="tooltip" title="Adicionar Agencia"></a>
 
 			<table class="table table-striped">
 				<tr>
@@ -23,11 +23,11 @@
 						<td>${agencia.cidade}</td>
 
 						<td><a href="/pacsaude/paciente/editar/${agencia.id}"><img
-								src="resources/img/update.png" width="18" height="18"
+								src="${pageContext.request.contextPath}/resources/img/update.png" width="18" height="18"
 								data-toggle="tooltip" title="Editar"></a>
 						<td>
 						<td><a href="/pacsaude/paciente/deletar/${agencia.id}"><img
-								src="resources/img/delete.png" width="18" height="18"
+								src="${pageContext.request.contextPath}/resources/img/delete.png" width="18" height="18"
 								data-toggle="tooltip" title="Excluir"
 								onclick="return confirm('Tem certeza que deseja excluir: ' + '${agencia.nome}')"></a>
 						<td>

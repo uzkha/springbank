@@ -6,14 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringBank</title>
       
-<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link href="resources/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
 
-<script src="resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-<script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
-<script src="resources/js/validation.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
       
 </head>
 <body>
@@ -35,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                     	<li class="active">  <a href="/springbank">Home</a> </li>
-                    	<li class="active">  <a href="/springbank/agencia">Agencias</a> </li>
+                    	<li class="active">  <a href="/springbank/agencia/">Agencias</a> </li>
                     </ul>               
                 </div><!-- /.navbar-collapse -->     
            </div>           
