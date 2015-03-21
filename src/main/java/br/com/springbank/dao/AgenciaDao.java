@@ -16,24 +16,6 @@ import br.com.springbank.model.Agencia;
 @Repository
 public class AgenciaDao extends AbstractClassSessionFactory{
 	
- //   @Autowired
- //   private SessionFactory sessionFactory;
-
-  //  protected Session getSession() {
-//        return sessionFactory.getCurrentSession(); 
- //   }
-
-	//private static Map<Long, Paciente> db = new HashMap<Long, Paciente>();
-	//private Session session;
-/*
-	@Deprecated
-	public AgenciaDao() {}
-
-	@Inject
-	public AgenciaDao(Session session) {
-		this.session = session;
-	}*/
-	
 	public void salvar(Agencia agencia) {
 		super.getSession().saveOrUpdate(agencia);
 		//Long id = paciente.getId();
@@ -62,9 +44,9 @@ public class AgenciaDao extends AbstractClassSessionFactory{
 		//db.remove(id);
 	}
 	
-	public String getNameById(Long id){  	  
-	    Agencia agencia= (Agencia) getSession().createCriteria(Agencia.class).add(Restrictions.eq("nome", id)).uniqueResult();  
-	    return agencia.getNome();  
+	public Agencia buscarId(Long id){  	  
+		Agencia agencia = (Agencia)getSession().load(Agencia.class, id);
+		return agencia; //db.get(id);
 	}  
 
 }

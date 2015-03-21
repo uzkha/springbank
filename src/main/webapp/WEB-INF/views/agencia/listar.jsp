@@ -10,7 +10,7 @@
 				src="${pageContext.request.contextPath}/resources/img/add.png" width="24" height="24"
 				data-toggle="tooltip" title="Adicionar Agencia"></a>
 
-			<table class="table table-striped">
+			<table class="table table-striped table-hover">
 				<tr>
 					<th>Id</th>
 					<th>Nome</th>
@@ -24,11 +24,11 @@
 						<td>${agencia.nome}</td>
 						<td>${agencia.cidade}</td>
 
-						<td><a href="/pacsaude/paciente/editar/${agencia.id}"><img
+						<td><a href="/springbank/agencia/editar/${agencia.id}"><img
 								src="${pageContext.request.contextPath}/resources/img/update.png" width="18" height="18"
 								data-toggle="tooltip" title="Editar"></a>
 						<td>
-						<td><a href="/pacsaude/paciente/deletar/${agencia.id}"><img
+						<td><a href="/springbank/agencia/deletar/${agencia.id}"><img
 								src="${pageContext.request.contextPath}/resources/img/delete.png" width="18" height="18"
 								data-toggle="tooltip" title="Excluir"
 								onclick="return confirm('Tem certeza que deseja excluir: ' + '${agencia.nome}')"></a>

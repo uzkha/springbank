@@ -32,10 +32,15 @@ public class AgenciaServiceImpl implements AgenciaService {
 		return agenciaDao.listar();		
 	}
 
+
 	@Override
-	public void deletar(int id) {
-		// TODO Auto-generated method stub
-		
+	public Agencia buscarId(Long id) {
+		return agenciaDao.buscarId(id);
+	}
+
+	@Override
+	public void deletar(Long id) {
+		agenciaDao.deletar(id);		
 	}
 	
 

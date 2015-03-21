@@ -13,6 +13,8 @@ public interface AgenciaService {
 	
 	public Collection<Agencia> listar();
 	
-	public void deletar(int id);
+	public void deletar(Long id);
+	
+	public Agencia buscarId(Long id);
 
 }

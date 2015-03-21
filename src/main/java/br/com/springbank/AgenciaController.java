@@ -31,15 +31,16 @@ public class AgenciaController {
 	}
 	
 	@RequestMapping(value = "/adicionar", method = RequestMethod.GET)
-	public String agenciaCadastrar(Locale locale, ModelMap model, HttpSession session) {
-		
-			
-		
+	public String agenciaCadastrar(Locale locale, ModelMap model, HttpSession session) {		
 		return "/agencia/form";
 	}
 	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public String editar(Locale locale, ModelMap model, @PathVariable("id") Long id) {
+		
+		Agencia agencia = agenciaService.buscarId(id);
+		model.addAttribute("agencia", agencia);	
+		
 		return "/agencia/form";
 	}
 	
@@ -47,6 +48,16 @@ public class AgenciaController {
 	public String salvar(Locale locale, ModelMap model, Agencia agencia) {
 		
 		agenciaService.salvar(agencia);		
+		model.addAttribute("agencias", agenciaService.listar());	
+		
+		return "agencia/listar";
+	}
+	
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.GET)
+	public String deletar(Locale locale, ModelMap model, @PathVariable("id") Long id) {
+		
+		agenciaService.deletar(id);
+		
 		model.addAttribute("agencias", agenciaService.listar());	
 		
 		return "agencia/listar";
