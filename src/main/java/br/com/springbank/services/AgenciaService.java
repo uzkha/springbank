@@ -1,15 +1,18 @@
 package br.com.springbank.services;
 
+import java.util.Collection;
+
 import org.springframework.stereotype.Service;
 
 import br.com.springbank.model.Agencia;
 
+
 public interface AgenciaService {
 	
-	public void cadastrarAgencia(Agencia agencia);
+	public void salvar(Agencia agencia);
 	
-	public void alterarAgencia(Agencia agencia);
+	public Collection<Agencia> listar();
 	
-	public void deletarAgencia(int id);
+	public void deletar(int id);
 
 }

@@ -1,3 +1,5 @@
+ <jsp:include page="../dashboard.jsp" />
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="container-large">
 	<div class="panel panel-default">
 		<div class="panel-heading">Agencias</div>
@@ -16,7 +18,7 @@
 					<th>&nbsp</th>
 					<th>&nbsp</th>
 				</tr>
-				<c:forEach var="paciente" items="${agencias}" varStatus="id">
+				<c:forEach var="agencia" items="${agencias}" varStatus="id">
 					<tr>
 						<td>${agencia.id}</td>
 						<td>${agencia.nome}</td>

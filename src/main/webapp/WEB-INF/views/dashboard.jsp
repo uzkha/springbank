@@ -41,6 +41,5 @@
            </div>           
         </nav>   
     </div><!-- /.container-fluid -->
-    <jsp:include page="${view}" />
 </body>
 </html>

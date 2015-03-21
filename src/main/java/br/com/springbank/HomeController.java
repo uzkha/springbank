@@ -35,7 +35,7 @@ public class HomeController {
 		
 		model.addAttribute("view", "index/home.jsp");
 		
-		return "dashboard";
+		return "index/home";
 	}
 	
 }

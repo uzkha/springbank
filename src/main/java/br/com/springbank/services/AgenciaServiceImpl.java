@@ -1,28 +1,43 @@
 package br.com.springbank.services;
 
-import org.springframework.stereotype.Service;
+import java.util.Collection;
 
+import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.com.springbank.dao.AgenciaDao;
 import br.com.springbank.model.Agencia;
 
 @Service
+@Transactional
 public class AgenciaServiceImpl implements AgenciaService {
 
-	@Override
-	public void cadastrarAgencia(Agencia agencia) {
-		// TODO Auto-generated method stub
+	@Autowired
+	private AgenciaDao agenciaDao;
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public void salvar(Agencia agencia) {
+		
+		//regras de negocio	
+		agenciaDao.salvar(agencia);
 	}
 
 	@Override
-	public void alterarAgencia(Agencia agencia) {
-		// TODO Auto-generated method stub
-
+	public Collection<Agencia> listar() {
+		return agenciaDao.listar();		
 	}
 
 	@Override
-	public void deletarAgencia(int id) {
+	public void deletar(int id) {
 		// TODO Auto-generated method stub
-
+		
 	}
+	
+
 
 }

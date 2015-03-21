@@ -2,6 +2,8 @@ package br.com.springbank;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,32 +26,30 @@ public class AgenciaController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listar(Locale locale, ModelMap model) {
 		
-		model.addAttribute("view", "agencia/listar.jsp");
-		
-		return "dashboard";
+		model.addAttribute("agencias", agenciaService.listar());	
+		return "agencia/listar";
 	}
 	
 	@RequestMapping(value = "/adicionar", method = RequestMethod.GET)
-	public String agenciaCadastrar(Locale locale, ModelMap model) {
+	public String agenciaCadastrar(Locale locale, ModelMap model, HttpSession session) {
 		
-		model.addAttribute("view", "agencia/form.jsp");
+			
 		
-		return "dashboard";
+		return "/agencia/form";
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable("id") Long id) {
-		return "form";
+		return "/agencia/form";
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String salvar(Locale locale, ModelMap model, Agencia agencia) {
 		
-		//agenciaService.cadastrarAgencia(agencia);
+		agenciaService.salvar(agencia);		
+		model.addAttribute("agencias", agenciaService.listar());	
 		
-		model.addAttribute("view", "agencia/listar.jsp");
-		
-		return "dashboard";
+		return "agencia/listar";
 	}
 
 }
