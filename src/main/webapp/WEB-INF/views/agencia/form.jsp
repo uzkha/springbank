@@ -1,7 +1,7 @@
  <jsp:include page="../dashboard.jsp" />
 <div id="container-large">
 	<div class="panel panel-default">
-		<div class="panel-heading">Inserir Agencia</div>
+		<div class="panel-heading">Manuteção Agencia</div>
 		<div class="panel-body">
 			<div class="error">${message}</div>
 			<form id="formAgencia" class="form-horizontal" role="form" 

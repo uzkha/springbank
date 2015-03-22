@@ -57,6 +57,7 @@
                     <ul class="nav navbar-nav">
                     	<li class="active">  <a href="/springbank">Home</a> </li>
                     	<li class="active">  <a href="/springbank/agencia/">Agencias</a> </li>
+                    	<li class="active">  <a href="/springbank/usuario/">Usuarios</a> </li>
                     </ul>               
                 </div><!-- /.navbar-collapse -->     
            </div>           

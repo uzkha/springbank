@@ -18,7 +18,6 @@ public class AgenciaServiceImpl implements AgenciaService {
 	@Autowired
 	private AgenciaDao agenciaDao;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void salvar(Agencia agencia) throws ServiceException {
 		
