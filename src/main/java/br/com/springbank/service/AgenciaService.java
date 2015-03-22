@@ -1,7 +1,8 @@
-package br.com.springbank.services;
+package br.com.springbank.service;
 
 import java.util.Collection;
 
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 
 import br.com.springbank.model.Agencia;

@@ -1,15 +1,11 @@
 package br.com.springbank.dao;
-import java.nio.channels.SeekableByteChannel;
+
 import java.util.Collection;
 import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import org.hibernate.Query;
 import br.com.springbank.model.Agencia;
+
 
 
 
@@ -24,9 +20,8 @@ public class AgenciaDao extends AbstractClassSessionFactory{
 	}
 	
 	public Collection<Agencia>listar() {
-		List<Agencia> agencias = getSession().createCriteria(Agencia.class).list();
 		
-		System.out.println("");
+		List<Agencia> agencias = getSession().createCriteria(Agencia.class).list();
 		
 		return agencias;
 	}
@@ -48,5 +43,24 @@ public class AgenciaDao extends AbstractClassSessionFactory{
 		Agencia agencia = (Agencia)getSession().load(Agencia.class, id);
 		return agencia; //db.get(id);
 	}  
+	
+	public List<Agencia> buscarNomeIdDiferente(Agencia agencia){
+		
+		//converte null para 0, em caso de insercao nao existe ainda o ID
+		Long id = agencia.getId() == null ? 0: agencia.getId();
+		
+		String hql = "from Agencia where nome = :nome and id <> :id"; 
+		Query query = getSession().createQuery(hql); 
+		query.setParameter("id", id);
+		query.setParameter("nome", agencia.getNome());
+		
+		
+		List<Agencia> agencias = query.list();
+		
+		
+		return agencias;
+	}
+	
+
 
 }

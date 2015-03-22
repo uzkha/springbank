@@ -14,7 +14,28 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
-      
+
+<div id="div-componente-sim-nao" class="modal fade">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 id="h-componente-sim-nao-titulo" class="modal-title">TITULO</h4>
+			</div>
+			<div class="modal-body">
+				<p id="p-componente-sim-nao-mensagem">MENSAGEM_EXCLUSAO</p>
+			</div>
+			<div class="modal-footer">
+				<button id="btn-componente-sim-nao-nao" type="button"
+					class="btn btn-default" data-dismiss="modal">Não</button>
+				<button id="btn-componente-sim-nao-sim" type="button"
+					class="btn btn-primary">Sim</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </head>
 <body>
    <body>
@@ -40,6 +61,3 @@
                 </div><!-- /.navbar-collapse -->     
            </div>           
         </nav>   
-    </div><!-- /.container-fluid -->
-</body>
-</html>

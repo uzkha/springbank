@@ -1,5 +1,6 @@
- <jsp:include page="../dashboard.jsp" />
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<jsp:include page="../dashboard.jsp" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<div class="panel panel-default">
 		<div class="panel-heading">Agencias</div>
@@ -7,8 +8,9 @@
 			<div class="error">${message}</div>
 
 			<a href="/springbank/agencia/adicionar"><img
-				src="${pageContext.request.contextPath}/resources/img/add.png" width="24" height="24"
-				data-toggle="tooltip" title="Adicionar Agencia"></a>
+				src="${pageContext.request.contextPath}/resources/img/add.png"
+				width="24" height="24" data-toggle="tooltip"
+				title="Adicionar Agencia"></a>
 
 			<table class="table table-striped table-hover">
 				<tr>
@@ -25,17 +27,20 @@
 						<td>${agencia.cidade}</td>
 
 						<td><a href="/springbank/agencia/editar/${agencia.id}"><img
-								src="${pageContext.request.contextPath}/resources/img/update.png" width="18" height="18"
-								data-toggle="tooltip" title="Editar"></a>
-						<td>
-						<td><a href="/springbank/agencia/deletar/${agencia.id}"><img
-								src="${pageContext.request.contextPath}/resources/img/delete.png" width="18" height="18"
-								data-toggle="tooltip" title="Excluir"
-								onclick="return confirm('Tem certeza que deseja excluir: ' + '${agencia.nome}')"></a>
-						<td>
+								src="${pageContext.request.contextPath}/resources/img/update.png"
+								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
+						</td>
+
+						<td><a href="#"
+							onclick="deleteItem(event, '${agencia.nome}', '/springbank/agencia/deletar/${agencia.id}')"><img
+								src="${pageContext.request.contextPath}/resources/img/delete.png"
+								height="18" data-toggle="tooltip" title="Excluir"></a></td>
+
+
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
 </div>
+<jsp:include page="../footer.jsp" />
