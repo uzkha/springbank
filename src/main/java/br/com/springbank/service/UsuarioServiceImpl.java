@@ -21,6 +21,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public void salvar(Usuario usuario) throws ServiceException {
 		
+		//se nao marcado ativo, seta valor para false
+		if (usuario.getAtivo() == null){
+			usuario.setAtivo(false);
+		}
+		
 		//verifica se existe usuario com o mesmo nome
 		validarLoginUsuario(usuario);
 		

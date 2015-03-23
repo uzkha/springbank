@@ -11,11 +11,11 @@
 				
 				<div class="form-group">
 					<label for="lbtipo" class="col-sm-2 control-label">Tipo de Usuário</label> <label
-						class="radio-inline"> <input type="radio" name="tipoCliente" 
+						class="radio-inline"> <input type="radio" ${cliente} name="tipo" 
 						id="tipo"	value="C"> Cliente
 					</label> 
 					<label 
-						class="radio-inline"> <input type="radio"
+						class="radio-inline"> <input type="radio" ${gerente}
 						name="tipo" id="tipoGerente" value="G"> Gerente
 					</label>
 				</div>
@@ -49,7 +49,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-8">
 						<div class="checkbox">
-							<label> <input type="checkbox" name="ativo" value="true">
+							<label> <input type="checkbox" ${ativo} name="ativo" value="true">
 								Ativo
 							</label>
 						</div>

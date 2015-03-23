@@ -32,14 +32,17 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/adicionar", method = RequestMethod.GET)
-	public String usuarioCadastrar(Locale locale, ModelMap model, HttpSession session) {		
+	public String usuarioCadastrar(Locale locale, ModelMap model, HttpSession session) {	
+		setarCampos(locale, model, null);
 		return "/usuario/form";
 	}
 	
+
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
 	public String editar(Locale locale, ModelMap model, @PathVariable("id") Long id) {
 		
 		Usuario usuario = usuarioService.buscarId(id);
+		setarCampos(locale, model, usuario);
 		model.addAttribute("usuario", usuario);	
 		
 		return "/usuario/form";
@@ -59,6 +62,8 @@ public class UsuarioController {
 			
 			model.addAttribute("usuario", usuario);
 			model.addAttribute("message", e.getMessage());
+			setarCampos(locale, model, usuario);
+			
 			return "usuario/form";			
 		}
 		
@@ -74,6 +79,32 @@ public class UsuarioController {
 		model.addAttribute("message", "Exclusão efetuada com sucesso!");
 		
 		return "usuario/listar";
+	}
+	
+	private void setarCampos(Locale locale, ModelMap model, Usuario usuario) {
+		
+		if (usuario == null){
+			model.addAttribute("cliente", "checked");	
+			model.addAttribute("ativo", "checked");	
+			
+		}else{
+			
+			//verifica se usuario ativo
+			if(usuario.getAtivo().equals(true)){
+				model.addAttribute("ativo", "checked");	
+			}
+			
+			//verifica se usuario cliente
+			if(usuario.getTipo().equals("C")){
+				model.addAttribute("cliente", "checked");	
+			}
+			
+			//verifica se usuario cliente
+			if(usuario.getTipo().equals("G")){
+				model.addAttribute("gerente", "checked");	
+			}
+		}
+		
 	}
 
 }
