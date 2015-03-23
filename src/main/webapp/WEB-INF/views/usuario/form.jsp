@@ -32,8 +32,7 @@
 					<label for="lbnomemae" class="col-sm-2 control-label">Senha</label>
 					<div class="col-sm-8">
 						<input type="password" class="form-control" id="senha"
-							placeholder="insira a senha" name="senha"
-							value="${usuario.senha}">
+							placeholder="insira a senha" name="senha">
 					</div>
 				</div>
 				<div class="form-group">

@@ -15,6 +15,27 @@ $(document).ready(function () {
 
 });
 
+$(document).ready(function () {
+    $("#formUsuario").validate({
+        // Define as regras
+        rules: {
+            login: {
+                // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+                required: true, minlength: 3
+            },                       
+            senha: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 5
+            },
+            senhaConfirmacao: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 5, equalTo: "#senha"
+
+            },
+        },
+    });
+
+});
 
 function show(titulo, mensagem, simFunction, naoFunction, simMensagem, naoMensagem) {
 	$('#h-componente-sim-nao-titulo').html(titulo);
