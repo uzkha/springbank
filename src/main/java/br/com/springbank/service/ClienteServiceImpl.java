@@ -21,8 +21,11 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void salvar(Cliente cliente) throws ServiceException {
 		
-		//verifica se existe cliente com o mesmo nome
+		//verifica se existe cliente com o mesmo cpf
 		validarCpfCliente(cliente);
+		
+		//verifica se existe cliente com o mesmo email
+		validarEmail(cliente);
 		
 		//regras de negocio	
 		clienteDao.salvar(cliente);
@@ -57,6 +60,16 @@ public class ClienteServiceImpl implements ClienteService {
 			throw new ServiceException("Já existe um cliente com o mesmo nome");
 		}
 		
+		
+	}
+	
+	private void validarEmail(Cliente cliente) throws ServiceException{
+		
+		List<Cliente> clientes = clienteDao.buscarEmailIdDiferente(cliente);
+		
+		if(clientes.size() > 0){
+			throw new ServiceException("Já existe um cliente com o mesmo email");
+		}
 		
 	}
 

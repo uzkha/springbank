@@ -59,6 +59,23 @@ public class ClienteDao extends AbstractClassSessionFactory{
 		return clientes;
 	}
 	
+	public List<Cliente> buscarEmailIdDiferente(Cliente cliente){
+		
+		//converte null para 0, em caso de insercao nao existe ainda o ID
+		Long id = cliente.getId() == null ? 0: cliente.getId();
+		
+		String hql = "from Cliente where email = :email and id <> :id"; 
+		Query query = getSession().createQuery(hql); 
+		query.setParameter("id", id);
+		query.setParameter("email", cliente.getEmail());
+		
+		
+		List<Cliente> clientes = query.list();
+		
+		
+		return clientes;
+	}
+	
 
 
 }

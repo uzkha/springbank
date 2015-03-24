@@ -37,6 +37,40 @@ $(document).ready(function () {
 
 });
 
+$(document).ready(function () {
+    $("#formCliente").validate({
+        // Define as regras
+        rules: {
+            nome: {
+                // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+                required: true, minlength: 3
+            },                       
+            endereco: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 3
+            },
+            cpfCnpj: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 11, number: true, maxlength: 11
+            },
+            email: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, email:true
+            },
+            telefone: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true
+            },
+            cidade: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 3
+            },
+       
+        },
+    });
+
+});
+
 function show(titulo, mensagem, simFunction, naoFunction, simMensagem, naoMensagem) {
 	$('#h-componente-sim-nao-titulo').html(titulo);
 	$('#p-componente-sim-nao-mensagem').html(mensagem);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.springbank.model.Cliente;
 import br.com.springbank.model.Usuario;
 import br.com.springbank.service.ClienteService;
+import br.com.springbank.service.UsuarioService;
 
 @Controller
 @RequestMapping(value = "/cliente")
@@ -22,6 +23,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -83,6 +87,65 @@ public class ClienteController {
 
 		return "cliente/listar";
 	}
+	
+	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
+	public String clienteUsuario(Locale locale, ModelMap model,	@PathVariable("id") Long id) {
+
+		//busca o cliente
+		Cliente cliente = clienteService.buscarId(id);
+		
+
+		model.addAttribute("cliente", cliente);
+		model.addAttribute("usuario", cliente.getUsuario());
+		
+		setarCamposUsuario(locale, model, cliente.getUsuario());
+		
+		return "cliente/formUsuario";
+	}
+	
+	
+	@RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
+	public String salvarUsuario(Locale locale, ModelMap model, Usuario usuario) {
+
+		try {
+			
+			//cliente
+			usuario.setTipo("C");
+			
+			//adiciona / atualiza usuario
+			usuarioService.salvar(usuario);
+			
+			//busca cliente
+			Cliente cliente = clienteService.buscarId(usuario.getIdCliente());
+			
+			//seta codigo usuario ao cliente
+			cliente.setUsuario(usuario);
+			
+			//salva dados cliente
+			clienteService.salvar(cliente);
+			
+			model.addAttribute("cliente",cliente);
+			model.addAttribute("usuario",usuario);
+			model.addAttribute("message", "Usuário para o cliente cadastrado com sucesso!");
+			
+			setarCamposUsuario(locale, model, usuario);
+			
+			return "cliente/formUsuario";
+
+		} catch (ServiceException e) {
+			
+			Cliente cliente = clienteService.buscarId(usuario.getIdCliente());
+			
+			model.addAttribute("cliente", cliente);
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("message", e.getMessage());
+			
+			setarCamposUsuario(locale, model, usuario);
+			
+			return "cliente/formUsuario";
+		}
+
+	}
 
 	private void setarCampos(Locale locale, ModelMap model, Cliente cliente) {
 
@@ -103,5 +166,23 @@ public class ClienteController {
 		}
 
 	}
+	
+	
+	private void setarCamposUsuario(Locale locale, ModelMap model, Usuario usuario) {
+
+		if (usuario == null) {
+			model.addAttribute("ativo", "checked");
+
+		} else {
+
+			// verifica se usuario ativo
+			if (usuario.getAtivo().equals(true)) {
+				model.addAttribute("ativo", "checked");
+			}
+
+		}
+
+	}
+
 
 }
