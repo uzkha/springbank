@@ -39,9 +39,6 @@ public class Usuario {
 	@Transient
 	private String senhaConfirmacao;
 	
-	@Transient
-	private Long idCliente;
-
 	public Long getId() {
 		return id;
 	}
@@ -90,14 +87,5 @@ public class Usuario {
 		this.ativo = ativo;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-	
-	
 	
 }

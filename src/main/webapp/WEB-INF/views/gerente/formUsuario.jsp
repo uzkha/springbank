@@ -2,11 +2,11 @@
 <jsp:include page="../dashboard.jsp" />
 <div id="container-large">
 	<ul class="nav nav-tabs">
-		<li role="presentation"><a href="/springbank/cliente/">Inicio</a></li>
+		<li role="presentation"><a href="/springbank/gerente/">Inicio</a></li>
 		<li role="presentation"><a
-			href="/springbank/cliente/editar/${cliente.id}">Cliente</a></li>
+			href="/springbank/gerente/editar/${gerente.id}">Gerente</a></li>
 		<li role="presentation" class="active"><a
-			href="/springbank/cliente/usuario/${cliente.id}">Usuário</a></li>
+			href="/springbank/gerente/usuario/${gerente.id}">Usuário</a></li>
 	</ul>
 
 	<div class="panel panel-default">
@@ -14,20 +14,20 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 			<form id="formUsuario" class="form-horizontal" role="form"
-				action="/springbank/cliente/salvarUsuario" method="post">
+				action="/springbank/gerente/salvarUsuario" method="post">
 
 				<div class="form-group">
-					<label for="lbnome" class="col-sm-2 control-label">Cliente</label>
+					<label for="lbnome" class="col-sm-2 control-label">Gerente</label>
 					<div class="col-sm-8"> 
 						<input type="text" class="form-control" name="nome" id="nome" disabled
-							value="${cliente.nome}">
+							value="${gerente.nome}">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="lbtipo" class="col-sm-2 control-label">Tipo de
 						Usuário</label> <label class="radio-inline"> <input type="radio"
-						checked name="tipo" disabled id="tipo" value="C"> Cliente
+						checked name="tipo" disabled id="tipo" value="C"> Gerente
 					</label> 
 				</div>
 
@@ -68,11 +68,11 @@
 
 
 				<input type="hidden" name="id" value="${usuario.id}">
-				<input type="hidden" name="clienteId" value="${cliente.id}">
+				<input type="hidden" name="gerenteId" value="${gerente.id}">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" value="button.back" class="btn btn-default"
-							onclick="document.location = '/springbank/cliente/editar/${cliente.id}'">Cancelar</button>
+							onclick="document.location = '/springbank/gerente/editar/${gerente.id}'">Cancelar</button>
 						<button type="submit" class="btn btn-default">Salvar</button>
 					</div>
 				</div>

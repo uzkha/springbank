@@ -1,5 +1,6 @@
 package br.com.springbank;
 
+import java.text.ParseException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -48,13 +49,15 @@ public class ClienteController {
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
 	public String editar(Locale locale, ModelMap model,
 			@PathVariable("id") Long id) {
-
+		
 		Cliente cliente = clienteService.buscarId(id);
 		model.addAttribute("cliente", cliente);
 		setarCampos(locale, model, cliente);
 		
 		return "/cliente/form";
 	}
+
+
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String salvar(Locale locale, ModelMap model, Cliente cliente) {
@@ -66,7 +69,7 @@ public class ClienteController {
 
 			return "cliente/listar";
 
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("message", e.getMessage());
@@ -105,7 +108,7 @@ public class ClienteController {
 	
 	
 	@RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
-	public String salvarUsuario(Locale locale, ModelMap model, Usuario usuario) {
+	public String salvarUsuario(Locale locale, ModelMap model, Usuario usuario, Long clienteId) {
 
 		try {
 			
@@ -116,7 +119,7 @@ public class ClienteController {
 			usuarioService.salvar(usuario);
 			
 			//busca cliente
-			Cliente cliente = clienteService.buscarId(usuario.getIdCliente());
+			Cliente cliente = clienteService.buscarId(clienteId);
 			
 			//seta codigo usuario ao cliente
 			cliente.setUsuario(usuario);
@@ -134,7 +137,7 @@ public class ClienteController {
 
 		} catch (ServiceException e) {
 			
-			Cliente cliente = clienteService.buscarId(usuario.getIdCliente());
+			Cliente cliente = clienteService.buscarId(clienteId);
 			
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("usuario", usuario);
@@ -183,6 +186,5 @@ public class ClienteController {
 		}
 
 	}
-
-
+	
 }

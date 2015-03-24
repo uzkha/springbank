@@ -14,6 +14,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
 
 <div id="div-componente-sim-nao" class="modal fade">
 	<div class="modal-dialog modal-sm">
@@ -35,6 +36,15 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(function() {
+		$('.datepicker').datepicker({
+			language : "pt-BR",
+			format : "dd/mm/yyyy"
+		});
+	});
+</script>
 
 </head>
 <body>
@@ -59,6 +69,7 @@
                     	<li class="active">  <a href="/springbank/agencia/">Agencias</a> </li>
                     	<li class="active">  <a href="/springbank/usuario/">Usuarios</a> </li>
                     	<li class="active">  <a href="/springbank/cliente/">Clientes</a> </li>
+                    	<li class="active">  <a href="/springbank/gerente/">Gerentes</a> </li>
                     </ul>               
                 </div><!-- /.navbar-collapse -->     
            </div>           
