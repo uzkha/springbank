@@ -51,10 +51,6 @@ public class GerenteServiceImpl implements GerenteService {
 
 		Gerente gerente = gerenteDao.buscarId(id);
 
-	//	Date dataFormatada = formatarData(gerente.getDataContratacao());
-
-	//	gerente.setDataContratacao(dataFormatada);
-
 		return gerente;
 	}
 
@@ -106,25 +102,6 @@ public class GerenteServiceImpl implements GerenteService {
 			e.printStackTrace();
 			return null;
 		}
-
-	}
-
-	private Date formatarData(Date date)  {
-		
-		try {	
-				
-			String dataString = Auxiliar.dateToString(date);
-			Date dataFormatada = Auxiliar.stringToDateFormatada(dataString);
-			
-			return dataFormatada;
-		
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-		
-	
 		
 	}
 }

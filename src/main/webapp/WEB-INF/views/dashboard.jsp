@@ -71,6 +71,7 @@
                     	<li class="active">  <a href="/springbank/cliente/">Clientes</a> </li>
                     	<li class="active">  <a href="/springbank/gerente/">Gerentes</a> </li>
                     	<li class="active">  <a href="/springbank/conta/">Contas</a> </li>
+                   		<li class="active">  <a href="/springbank/transacao/">Transações</a> </li>
                     </ul>               
                 </div><!-- /.navbar-collapse -->     
            </div>           
