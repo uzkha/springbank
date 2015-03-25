@@ -22,6 +22,7 @@ import br.com.springbank.model.Gerente;
 import br.com.springbank.model.Usuario;
 import br.com.springbank.service.GerenteService;
 import br.com.springbank.service.UsuarioService;
+import br.com.springbank.util.Auxiliar;
 
 @Controller
 @RequestMapping(value = "/gerente")
@@ -56,6 +57,9 @@ public class GerenteController {
 
 		Gerente gerente = gerenteService.buscarId(id);		
 		model.addAttribute("gerente", gerente);
+		
+		String dataStr = Auxiliar.dateToStringFormatada(gerente.getDataContratacao());
+		model.addAttribute("dataContratacao", dataStr);
 				
 		return "/gerente/form";
 	}

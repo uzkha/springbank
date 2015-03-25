@@ -77,7 +77,7 @@
 					<div class='col-sm-4 date input-group'>
 						<input type="text" class="form-control datepicker"
 							id="dataContratacao" name="dataContratacao"
-							value="${gerente.dataContratacao}"> <span
+							value="${dataContratacao}"> <span
 							class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span>
 					</div>
