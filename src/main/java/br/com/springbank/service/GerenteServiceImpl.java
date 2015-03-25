@@ -25,66 +25,106 @@ public class GerenteServiceImpl implements GerenteService {
 
 	@Override
 	public void salvar(Gerente gerente) throws ServiceException, ParseException {
-		
-		//verifica se existe gerente com o mesmo cpf
+
+		// verifica se existe gerente com o mesmo cpf
 		validarCpfGerente(gerente);
-		
-		//verifica se existe gerente com o mesmo email
+
+		// verifica se existe gerente com o mesmo email
 		validarEmail(gerente);
-		
-		//formatarData
-		String dataFormatada = Auxiliar.dateToStringFormatada(gerente.getDataContratacao());
-		
-		Date dataFormatadaSql = Auxiliar.stringToDateFormatada(dataFormatada);
-		
-		gerente.setDataContratacao(dataFormatadaSql);
-		
-		//regras de negocio	
+
+		// formartarData
+		Date date = formatarDataSql(gerente.getDataContratacao());
+
+		gerente.setDataContratacao(date);
+
+		// regras de negocio
 		gerenteDao.salvar(gerente);
 	}
 
-
 	@Override
 	public Collection<Gerente> listar() {
-		return gerenteDao.listar();		
+		return gerenteDao.listar();
 	}
-
 
 	@Override
 	public Gerente buscarId(Long id) {
-		return gerenteDao.buscarId(id);
+
+		Gerente gerente = gerenteDao.buscarId(id);
+
+	//	Date dataFormatada = formatarData(gerente.getDataContratacao());
+
+	//	gerente.setDataContratacao(dataFormatada);
+
+		return gerente;
 	}
 
 	@Override
 	public void deletar(Long id) {
-		gerenteDao.deletar(id);		
-	}
-	
-	
-	
-	/****************VALIDACAO
-	 * @throws Exception **************/
-	
-	private void validarCpfGerente(Gerente gerente) throws ServiceException {
-				
-		List<Gerente> gerentes = gerenteDao.buscarCpfIdDiferente(gerente);
-		
-		if(gerentes.size() > 0){
-			throw new ServiceException("Já existe um gerente com o mesmo nome");
-		}
-		
-		
-	}
-	
-	private void validarEmail(Gerente gerente) throws ServiceException{
-		
-		List<Gerente> gerentes = gerenteDao.buscarEmailIdDiferente(gerente);
-		
-		if(gerentes.size() > 0){
-			throw new ServiceException("Já existe um gerente com o mesmo email");
-		}
-		
+		gerenteDao.deletar(id);
 	}
 
+	/****************
+	 * VALIDACAO
+	 * 
+	 * @throws Exception
+	 **************/
+
+	private void validarCpfGerente(Gerente gerente) throws ServiceException {
+
+		List<Gerente> gerentes = gerenteDao.buscarCpfIdDiferente(gerente);
+
+		if (gerentes.size() > 0) {
+			throw new ServiceException("Já existe um gerente com o mesmo nome");
+		}
+
+	}
+
+	private void validarEmail(Gerente gerente) throws ServiceException {
+
+		List<Gerente> gerentes = gerenteDao.buscarEmailIdDiferente(gerente);
+
+		if (gerentes.size() > 0) {
+			throw new ServiceException("Já existe um gerente com o mesmo email");
+		}
+
+	}
+
+	private Date formatarDataSql(Date date) {
+
+		try {
+			// formatarData
+			String dataFormatada = Auxiliar.dateToStringFormatada(date);
+
+			Date dataFormatadaSql;
+
+			dataFormatadaSql = Auxiliar.stringToDateFormatada(dataFormatada);
+
+			return dataFormatadaSql;
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	private Date formatarData(Date date)  {
+		
+		try {	
+				
+			String dataString = Auxiliar.dateToString(date);
+			Date dataFormatada = Auxiliar.stringToDateFormatada(dataString);
+			
+			return dataFormatada;
+		
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	
+		
+	}
 }

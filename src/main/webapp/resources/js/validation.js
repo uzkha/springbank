@@ -38,6 +38,80 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $("#formConta").validate({
+        // Define as regras
+        rules: {
+            clienteId: {
+                // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+                required: true,
+            },                       
+            gerenteId: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 5
+            },
+            agenciaId: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+            saldo: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, number: true
+
+            },
+            limite: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, number: true
+
+            },
+        },
+    });
+
+});
+
+$(document).ready(function () {
+    $("#formGerente").validate({
+        // Define as regras
+        rules: {
+            nome: {
+                // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+                required: true,
+            },                       
+            cpfCnpj: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, minlength: 11, maxlenght: 11
+            },
+            email: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, email: true,
+
+            },
+            telefone: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+            endereco: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+            cidade: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+            dataContratacao: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+        },
+    });
+
+});
+
+$(document).ready(function () {
     $("#formCliente").validate({
         // Define as regras
         rules: {

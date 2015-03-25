@@ -13,7 +13,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<form id="formGerenteUsuario" class="form-horizontal" role="form"
+			<form id="formGerente" class="form-horizontal" role="form"
 				action="/springbank/gerente/salvar" method="post">
 
 				<div class="form-group">

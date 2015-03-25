@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "C")
+//@DiscriminatorValue(value = "C")
 public class Cliente extends Pessoa {
 	
 	@Column
