@@ -30,7 +30,7 @@ public class GerenteController {
 
 	@Autowired
 	private GerenteService gerenteService;
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -47,7 +47,7 @@ public class GerenteController {
 	@RequestMapping(value = "/adicionar", method = RequestMethod.GET)
 	public String gerenteCadastrar(Locale locale, ModelMap model,
 			HttpSession session) {
-		
+
 		return "/gerente/form";
 	}
 
@@ -55,12 +55,13 @@ public class GerenteController {
 	public String editar(Locale locale, ModelMap model,
 			@PathVariable("id") Long id) {
 
-		Gerente gerente = gerenteService.buscarId(id);		
+		Gerente gerente = gerenteService.buscarId(id);
 		model.addAttribute("gerente", gerente);
-		
-		String dataStr = Auxiliar.dateToStringFormatada(gerente.getDataContratacao());
+
+		String dataStr = Auxiliar.dateToStringFormatada(gerente
+				.getDataContratacao());
 		model.addAttribute("dataContratacao", dataStr);
-				
+
 		return "/gerente/form";
 	}
 
@@ -78,7 +79,7 @@ public class GerenteController {
 
 			model.addAttribute("gerente", gerente);
 			model.addAttribute("message", e.getMessage());
-			
+
 			return "gerente/form";
 		}
 
@@ -95,69 +96,68 @@ public class GerenteController {
 
 		return "gerente/listar";
 	}
-	
-	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
-	public String gerenteUsuario(Locale locale, ModelMap model,	@PathVariable("id") Long id) {
 
-		//busca o gerente
+	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
+	public String gerenteUsuario(Locale locale, ModelMap model,
+			@PathVariable("id") Long id) {
+
+		// busca o gerente
 		Gerente gerente = gerenteService.buscarId(id);
-		
 
 		model.addAttribute("gerente", gerente);
 		model.addAttribute("usuario", gerente.getUsuario());
-		
+
 		setarCamposUsuario(locale, model, gerente.getUsuario());
-		
+
 		return "gerente/formUsuario";
 	}
-	
-	
+
 	@RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
-	public String salvarUsuario(Locale locale, ModelMap model, Usuario usuario, Long gerenteId) {
+	public String salvarUsuario(Locale locale, ModelMap model, Usuario usuario,
+			Long gerenteId) {
 
 		try {
-			
-			//gerente
+
+			// gerente
 			usuario.setTipo("C");
-			
-			//adiciona / atualiza usuario
+
+			// adiciona / atualiza usuario
 			usuarioService.salvar(usuario);
-			
-			//busca gerente
+
+			// busca gerente
 			Gerente gerente = gerenteService.buscarId(gerenteId);
-			
-			//seta codigo usuario ao gerente
+
+			// seta codigo usuario ao gerente
 			gerente.setUsuario(usuario);
-			
-			//salva dados gerente
+
+			// salva dados gerente
 			gerenteService.salvar(gerente);
-			
-			model.addAttribute("gerente",gerente);
-			model.addAttribute("usuario",usuario);
-			model.addAttribute("message", "Usuário para o gerente cadastrado com sucesso!");
-			
+
+			model.addAttribute("gerente", gerente);
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("message",
+					"Usuário para o gerente cadastrado com sucesso!");
+
 			setarCamposUsuario(locale, model, usuario);
-			
+
 			return "gerente/formUsuario";
 
 		} catch (ServiceException | ParseException e) {
-			
+
 			Gerente gerente = gerenteService.buscarId(gerenteId);
-			
+
 			model.addAttribute("gerente", gerente);
 			model.addAttribute("usuario", usuario);
 			model.addAttribute("message", e.getMessage());
-			
+
 			setarCamposUsuario(locale, model, usuario);
-			
+
 			return "gerente/formUsuario";
 		}
-
 	}
 
-
-	
-	private void setarCamposUsuario(Locale locale, ModelMap model, Usuario usuario) {
+	private void setarCamposUsuario(Locale locale, ModelMap model,
+			Usuario usuario) {
 
 		if (usuario == null) {
 			model.addAttribute("ativo", "checked");
@@ -172,15 +172,14 @@ public class GerenteController {
 		}
 
 	}
-	
+
 	@InitBinder
-	 protected void initBinder(WebDataBinder binder) {
-	 
-	   SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-	   sdf.setLenient(true);
-	   binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));  
+	protected void initBinder(WebDataBinder binder) {
 
-	 }
+		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+		sdf.setLenient(true);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 
+	}
 
 }
