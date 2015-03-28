@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.springbank.dao.ClienteDao;
 import br.com.springbank.model.Cliente;
+import br.com.springbank.model.Usuario;
 
 @Service
 @Transactional
@@ -47,6 +48,10 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteDao.deletar(id);		
 	}
 	
+	@Override
+	public Cliente buscarClienteUsuario(Usuario usuario) {
+		return clienteDao.buscarClienteUsuario(usuario);
+	}
 	
 	
 	/****************VALIDACAO
@@ -72,5 +77,6 @@ public class ClienteServiceImpl implements ClienteService {
 		}
 		
 	}
+
 
 }

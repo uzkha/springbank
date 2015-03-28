@@ -2,9 +2,15 @@ package br.com.springbank.dao;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+
+import br.com.springbank.model.Cliente;
 import br.com.springbank.model.Transacao;
+import br.com.springbank.model.Usuario;
 
 
 
@@ -25,6 +31,15 @@ public class TransacaoDao extends AbstractClassSessionFactory{
 		
 		return transacaos;
 	}
+	
+	public Collection<Transacao>listar(Cliente cliente){  	  
+		
+		Criteria cr = getSession().createCriteria(Transacao.class);
+		cr.add(Restrictions.eq("cliente", cliente));
+		List<Transacao> transacoes = cr.list();
+		
+		return transacoes; 
+	}  
 
 	public Transacao get(Long id) {
 		Transacao transacao = (Transacao)getSession().load(Transacao.class, id);

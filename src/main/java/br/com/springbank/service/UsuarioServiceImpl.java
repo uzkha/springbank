@@ -53,7 +53,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuarioDao.deletar(id);		
 	}
 	
-	
+
+	@Override
+	public Usuario buscarNome(String nome) {
+		return usuarioDao.buscarNome(nome);
+	}
 	
 	/****************VALIDACAO
 	 * @throws Exception **************/
@@ -89,5 +93,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		
 	}
+
 
 }

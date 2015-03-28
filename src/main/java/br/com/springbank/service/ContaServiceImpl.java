@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.springbank.dao.ContaDao;
+import br.com.springbank.model.Cliente;
 import br.com.springbank.model.Conta;
 
 @Service
@@ -29,7 +30,11 @@ public class ContaServiceImpl implements ContaService {
 	public Collection<Conta> listar() {
 		return contaDao.listar();		
 	}
-
+	
+	@Override
+	public Collection<Conta> listar(Cliente cliente) {
+				return contaDao.listar(cliente);	
+	}
 
 	@Override
 	public Conta buscarId(Long id) {
@@ -40,7 +45,6 @@ public class ContaServiceImpl implements ContaService {
 	public void deletar(Long id) {
 		contaDao.deletar(id);		
 	}
-	
 	
 	
 	/****************VALIDACAO

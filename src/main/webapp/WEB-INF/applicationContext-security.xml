@@ -11,7 +11,10 @@
 		<intercept-url pattern="/usuario/*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/agencia/*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/cliente/*" access="ROLE_ADMIN" />
-		<intercept-url pattern="/conta/*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/conta/" access="ROLE_USER, ROLE_ADMIN" />
+		<intercept-url pattern="/conta/adicionar" access=" ROLE_ADMIN" />
+		<intercept-url pattern="/conta/editar" access=" ROLE_ADMIN" />
+		<intercept-url pattern="/conta/excluir" access=" ROLE_ADMIN" />
 		<intercept-url pattern="/transacao/" access="ROLE_USER, ROLE_ADMIN" />
 		<intercept-url pattern="/transacao/adicionar" access="ROLE_USER" />
 		<intercept-url pattern="/transacao/visualizar" access="ROLE_USER, ROLE_ADMIN" />

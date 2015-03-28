@@ -2,8 +2,11 @@ package br.com.springbank.dao;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+
 import br.com.springbank.model.Usuario;
 
 
@@ -43,6 +46,12 @@ public class UsuarioDao extends AbstractClassSessionFactory{
 		Usuario usuario = (Usuario)getSession().load(Usuario.class, id);
 		return usuario; //db.get(id);
 	}  
+	
+	public Usuario buscarNome(String username){  	  
+		Usuario usuario = (Usuario) getSession().createCriteria(Usuario.class).add(Restrictions.eq("login", username)).uniqueResult();
+		return usuario; //db.get(id);
+	}  
+	
 	
 	public List<Usuario> buscarLoginIdDiferente(Usuario usuario){
 		

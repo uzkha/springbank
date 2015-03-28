@@ -38,6 +38,33 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $("#formTransacao").validate({
+        // Define as regras
+        rules: {
+            contaId: {
+                // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+                required: true,
+            },                       
+            tipoTransacao: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true,
+            },
+            dataMovimento: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, 
+
+            },
+            valor: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, number: true,
+
+            },
+        },
+    });
+
+});
+
+$(document).ready(function () {
     $("#formConta").validate({
         // Define as regras
         rules: {

@@ -1,11 +1,17 @@
 package br.com.springbank;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +23,13 @@ import br.com.springbank.model.Cliente;
 import br.com.springbank.model.Conta;
 import br.com.springbank.model.Transacao;
 import br.com.springbank.model.Gerente;
+import br.com.springbank.model.Usuario;
 import br.com.springbank.service.AgenciaService;
 import br.com.springbank.service.ClienteService;
 import br.com.springbank.service.ContaService;
 import br.com.springbank.service.TransacaoService;
 import br.com.springbank.service.GerenteService;
+import br.com.springbank.service.UsuarioService;
 
 @Controller
 @RequestMapping(value= "/transacao")
@@ -36,19 +44,38 @@ public class TransacaoController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listar(Locale locale, ModelMap model) {
+						
+		Usuario usuario = buscarUsuarioSessao();
 		
-		model.addAttribute("transacoes", transacaoService.listar());	
+		if(usuario.getTipo().equals("G")){
+		
+			transacao  = transacaoService.listar(); //lista todas as atividades
+		
+		}else{
+			
+			
+			Cliente cliente = clienteService.buscarClienteUsuario(usuario);			
+	    	transacao = transacaoService.listar(cliente);
+			
+		}
+				
+		model.addAttribute("transacoes", transacao);	
 		return "transacao/listar";
 	}
-	
+
+
 	@RequestMapping(value = "/adicionar", method = RequestMethod.GET)
 	public String transacaoCadastrar(Locale locale, ModelMap model, HttpSession session) {	
-		
+			
+    			
 		listarEntidadeTransacao(locale, model);		
 		setarCampos(locale, model, null);
 		return "/transacao/form";
@@ -67,9 +94,9 @@ public class TransacaoController {
 			transacao.setConta(conta);
 			transacao.setCliente(cliente);
 						
-			transacaoService.salvar(transacao);		
-			
-			model.addAttribute("transacoes", transacaoService.listar());
+			transacaoService.salvar(transacao);					
+						
+			model.addAttribute("transacoes", transacaoService.listar(cliente));
 			model.addAttribute("message", "Movimento realizado com sucesso!");
 			
 			return "transacao/listar";
@@ -91,13 +118,18 @@ public class TransacaoController {
 		Transacao transacao = transacaoService.buscarId(id);
 		
 		model.addAttribute("transacao",transacao);		
+		model.addAttribute("disabled","disabled");	
+		
 		setarCampos(locale, model, transacao);
 		return "transacao/form";
 	}
 
 	private void listarEntidadeTransacao(Locale locale, ModelMap model) {
 		
-		model.addAttribute("contas", contaService.listar());	
+		Usuario usuario = buscarUsuarioSessao();
+		Cliente cliente = clienteService.buscarClienteUsuario(usuario);	
+		
+		model.addAttribute("contas", contaService.listar(cliente));	
 		
 	}
 	
@@ -115,6 +147,16 @@ public class TransacaoController {
 				model.addAttribute("transferencia", "checked");	
 			}
 		}
+		
+	}
+	
+	private Usuario buscarUsuarioSessao() {
+		// TODO Auto-generated method stub
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		Usuario usuario = usuarioService.buscarNome(user.getUsername());
+		
+		return usuario;
 		
 	}
 }

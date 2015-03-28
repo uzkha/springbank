@@ -6,9 +6,9 @@
 		<div class="panel-heading">Inserir Transação</div>
 		<div class="panel-body">
 			<div class="error">${message}</div>
-			<form id="formConta" class="form-horizontal" role="form"
+			<form id="formTransacao" class="form-horizontal" role="form"
 				action="/springbank/transacao/salvar" method="post">
-				
+
 				<div class="form-group">
 					<label for="lbtipo" class="col-sm-2 control-label">Transação
 						Pessoa</label> <label class="radio-inline"> <input type="radio"
@@ -19,12 +19,22 @@
 						Transferencia
 					</label>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="lbConta" class="col-sm-2 control-label">Conta</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="contaId"
-							name="contaId"	value="${transacao.conta.id}">
+						<select name="contaId" class="form-control">
+							<c:forEach var="conta" items="${contas}" varStatus="id">
+								<c:choose>
+									<c:when test="${conta.id == transacao.conta.id}">
+										<option selected value="${conta.id}">${conta.id}</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${conta.id}">${conta.id}</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 
@@ -50,8 +60,8 @@
 					</div>
 				</div>
 
-				<input type="hidden" name="id" value="${transacao.id}">
-				<input type="hidden" name="tipoMovimento" value="D">
+				<input type="hidden" name="id" value="${transacao.id}"> <input
+					type="hidden" name="tipoMovimento" value="D">
 				<!-- modo update nao envia campo disabled, setar o mesmo cliente -->
 
 				<div class="form-group">

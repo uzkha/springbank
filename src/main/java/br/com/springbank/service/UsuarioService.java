@@ -13,5 +13,7 @@ public interface UsuarioService {
 	public void deletar(Long id);
 	
 	public Usuario buscarId(Long id);
+	
+	public Usuario buscarNome(String nome);
 
 }

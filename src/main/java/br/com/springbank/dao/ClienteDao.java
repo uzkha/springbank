@@ -2,9 +2,13 @@ package br.com.springbank.dao;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+
 import br.com.springbank.model.Cliente;
+import br.com.springbank.model.Usuario;
 
 
 @Repository
@@ -39,6 +43,11 @@ public class ClienteDao extends AbstractClassSessionFactory{
 	
 	public Cliente buscarId(Long id){  	  
 		Cliente cliente = (Cliente)getSession().load(Cliente.class, id);
+		return cliente; //db.get(id);
+	}  
+	
+	public Cliente buscarClienteUsuario(Usuario usuario){  	  
+		Cliente cliente = (Cliente) getSession().createCriteria(Cliente.class).add(Restrictions.eq("usuario", usuario)).uniqueResult();
 		return cliente; //db.get(id);
 	}  
 	
