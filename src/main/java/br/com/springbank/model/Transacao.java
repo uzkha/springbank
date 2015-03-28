@@ -6,11 +6,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -48,6 +46,12 @@ public class Transacao {
 	@Column
 	@NotNull
 	private Date dataMovimento;
+	
+	@Column
+	private String codigoPagamento;
+	
+	@Column
+	private Long idOrigem;
 	
 	public Long getId() {
 		return id;
@@ -91,5 +95,17 @@ public class Transacao {
 	public void setDataMovimento(Date dataMovimento) {
 		this.dataMovimento = dataMovimento;
 	}
-		
+	public String getCodigoPagamento() {
+		return codigoPagamento;
+	}
+	public void setCodigoPagamento(String codigoPagamento) {
+		this.codigoPagamento = codigoPagamento;
+	}
+	public Long getIdOrigem() {
+		return idOrigem;
+	}
+	public void setIdOrigem(Long idOrigem) {
+		this.idOrigem = idOrigem;
+	}
+	
 }

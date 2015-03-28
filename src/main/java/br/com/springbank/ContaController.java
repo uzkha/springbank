@@ -1,5 +1,7 @@
 package br.com.springbank;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -16,10 +18,14 @@ import br.com.springbank.model.Agencia;
 import br.com.springbank.model.Cliente;
 import br.com.springbank.model.Conta;
 import br.com.springbank.model.Gerente;
+import br.com.springbank.model.Transacao;
+import br.com.springbank.model.Usuario;
 import br.com.springbank.service.AgenciaService;
 import br.com.springbank.service.ClienteService;
 import br.com.springbank.service.ContaService;
 import br.com.springbank.service.GerenteService;
+import br.com.springbank.service.UsuarioService;
+import br.com.springbank.util.Auxiliar;
 
 @Controller
 @RequestMapping(value= "/conta")
@@ -36,13 +42,29 @@ public class ContaController {
 	
 	@Autowired
 	private GerenteService gerenteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listar(Locale locale, ModelMap model) {
 		
-		model.addAttribute("contas", contaService.listar());	
+		Collection<Conta> contas = new ArrayList<Conta>();
+		
+		String userName = Auxiliar.buscarUsuarioSessao();
+		
+		Usuario usuario = usuarioService.buscarNome(userName);
+		
+		if(usuario.getTipo().equals("G")){
+			contas = contaService.listar();
+		}else{
+			Cliente cliente = clienteService.buscarClienteUsuario(usuario);		
+			contas = contaService.listar(cliente);
+		}
+		
+		model.addAttribute("contas", contas);	
 		return "conta/listar";
 	}
 	

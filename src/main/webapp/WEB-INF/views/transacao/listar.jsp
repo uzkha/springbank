@@ -15,6 +15,7 @@
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>Transacao</th>
+					<th>Cliente</th>
 					<th>Conta</th>
 					<th>Valor</th>
 					<th>Tipo de Transação</th>
@@ -25,14 +26,26 @@
 				<c:forEach var="transacao" items="${transacoes}" varStatus="id">
 					<tr>
 						<td>${transacao.id}</td>
+						<td>${transacao.cliente.nome}</td>
 						<td>${transacao.conta.id}</td>
 						<td>${transacao.valor}</td>
-						<td>${transacao.tipoTransacao}</td>
-						<td>${transacao.tipoMovimento}</td>
+						<td><c:if test="${transacao.tipoTransacao == 'P'}">
+								<c:out value="Pagamento" />
+							</c:if> <c:if test="${transacao.tipoTransacao == 'T'}">
+								<c:out value="Transferencia" />
+							</c:if>
+						</td>
+						<td><c:if test="${transacao.tipoMovimento == 'D'}">
+								<c:out value="Debito" />
+							</c:if> <c:if test="${transacao.tipoMovimento == 'C'}">
+								<c:out value="Credito" />
+							</c:if>
+						</td>
 
-						<td><a href="/springbank/transacao/visualizar/${transacao.id}"><img
-								src="${pageContext.request.contextPath}/resources/img/update.png"
-								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
+						<td><a
+							href="/springbank/transacao/visualizar/${transacao.id}"><img
+								src="${pageContext.request.contextPath}/resources/img/visualizar.png"
+								width="18" height="18" data-toggle="tooltip" title="Visualizar"></a>
 						</td>
 
 					</tr>

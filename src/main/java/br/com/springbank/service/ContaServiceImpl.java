@@ -35,6 +35,11 @@ public class ContaServiceImpl implements ContaService {
 	public Collection<Conta> listar(Cliente cliente) {
 				return contaDao.listar(cliente);	
 	}
+	
+	@Override
+	public Collection<Conta> listarDiff(Cliente cliente) {
+		return contaDao.listarDiff(cliente);
+	}
 
 	@Override
 	public Conta buscarId(Long id) {

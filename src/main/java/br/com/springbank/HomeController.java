@@ -1,5 +1,6 @@
 package br.com.springbank;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -36,6 +38,24 @@ public class HomeController {
 		model.addAttribute("view", "index/home.jsp");
 		
 		return "index/home";
+	}
+	
+	@RequestMapping(value = "/403", method = RequestMethod.GET)
+	public ModelAndView accesssDenied(Principal user) {
+ 
+		ModelAndView model = new ModelAndView();
+ 
+		if (user != null) {
+			model.addObject("msg", "Olá " + user.getName().toUpperCase() 
+			+ ", você não possui permissão para acessar esta página.");
+		} else {
+			model.addObject("msg", 
+			"Você não possui permissão para acessar esta página.");
+		}
+ 
+		model.setViewName("403");
+		return model;
+ 
 	}
 	
 }

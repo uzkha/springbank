@@ -17,6 +17,8 @@ public interface ContaService {
 	
 	public Collection<Conta> listar(Cliente cliente);
 	
+	public Collection<Conta> listarDiff(Cliente cliente);
+	
 	public void deletar(Long id);
 	
 	public Conta buscarId(Long id);

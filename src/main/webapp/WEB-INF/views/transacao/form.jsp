@@ -12,18 +12,18 @@
 				<div class="form-group">
 					<label for="lbtipo" class="col-sm-2 control-label">Transação
 						Pessoa</label> <label class="radio-inline"> <input type="radio"
-						${pagamento} name="tipoTransacao" id="tipoPagamento" value="P">
-						Pagamento
+						${pagamento} ${disabled} name="tipoTransacao" id="tipoPagamento"
+						value="P"> Pagamento
 					</label> <label class="radio-inline"> <input type="radio"
-						${transferencia} name="tipoTransacao" id="transferencia" value="T">
-						Transferencia
+						${transferencia} ${disabled} name="tipoTransacao"
+						id="transferencia" value="T"> Transferencia
 					</label>
 				</div>
 
 				<div class="form-group">
-					<label for="lbConta" class="col-sm-2 control-label">Conta</label>
+					<label for="lbConta" class="col-sm-2 control-label">Conta Origem</label>
 					<div class="col-sm-4">
-						<select name="contaId" class="form-control">
+						<select ${disabled} name="contaId" class="form-control">
 							<c:forEach var="conta" items="${contas}" varStatus="id">
 								<c:choose>
 									<c:when test="${conta.id == transacao.conta.id}">
@@ -43,7 +43,7 @@
 					</label>
 
 					<div class='col-sm-4 date input-group'>
-						<input type="text" class="form-control datepicker"
+						<input type="text" ${disabled} class="form-control datepicker"
 							id="dataMovimento" name="dataMovimento"
 							value="${transacao.dataMovimento}"> <span
 							class="input-group-addon"><span
@@ -52,9 +52,38 @@
 				</div>
 
 				<div class="form-group">
+					<label for="lbContaDestino" class="col-sm-2 control-label">Conta Destino</label>
+					<div class="col-sm-4">
+						<select ${disabled} name="contaIdDestino" class="form-control">
+							<option>nenhum</option>
+							<c:forEach var="conta" items="${contasDestino}" varStatus="id">
+								<c:choose>
+									<c:when test="${conta.id == contaDestinoId}">
+										<option selected value="${conta.id}">${conta.id}</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${conta.id}">${conta.id}</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="lbValor" class="col-sm-2 control-label">Código
+						de Barras</label>
+					<div class="col-sm-4">
+						<input type="text" ${disabled} class="form-control"
+							id="codigoPagamento" placeholder="insira o código de barras"
+							name="codigoPagamento" value="${transacao.codigoPagamento}">
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label for="lbValor" class="col-sm-2 control-label">Valor</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="valor"
+						<input type="text" ${disabled} class="form-control" id="valor"
 							placeholder="insira o valor do movimento" name="valor"
 							value="${transacao.valor}">
 					</div>
@@ -68,7 +97,7 @@
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" value="button.back" class="btn btn-default"
 							onclick="document.location = '/springbank/transacao/'">Cancelar</button>
-						<button type="submit" class="btn btn-default">Salvar</button>
+						<button type="submit" ${disabled} class="btn btn-default">Salvar</button>
 					</div>
 				</div>
 			</form>
