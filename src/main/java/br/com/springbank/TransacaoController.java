@@ -52,7 +52,9 @@ public class TransacaoController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listar(Locale locale, ModelMap model) {
-						
+				
+		Collection<Transacao> transacao = new ArrayList<Transacao>();
+		
 		Usuario usuario = buscarUsuarioSessao();
 		
 		if(usuario.getTipo().equals("G")){
