@@ -37,7 +37,7 @@ public class HomeController {
 		
 		model.addAttribute("view", "index/home.jsp");
 		
-		return "index/home";
+		return "dashboard";
 	}
 	
 	@RequestMapping(value = "/403", method = RequestMethod.GET)

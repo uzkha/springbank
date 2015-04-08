@@ -1,5 +1,4 @@
 
-<jsp:include page="../dashboard.jsp" />
 <div id="container-large">
 	<ul class="nav nav-tabs">
 		<li role="presentation"><a href="/springbank/gerente/">Inicio</a></li>

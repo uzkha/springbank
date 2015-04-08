@@ -1,5 +1,4 @@
 
-<jsp:include page="../dashboard.jsp" />
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<div class="panel panel-default">

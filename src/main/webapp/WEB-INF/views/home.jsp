@@ -1,4 +1,4 @@
- <jsp:include page="../dashboard.jsp" />
+<!--  <jsp:include page="../dashboard.jsp" /> -->
 <div id="container-large">
 	<div class="panel panel-default">
 		<div class="panel-heading">SpringBank - Home</div>
