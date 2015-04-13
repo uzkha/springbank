@@ -25,7 +25,27 @@
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrap/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
+	<!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins/morris/raphael.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins/morris/morris.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources//bootstrap/js/plugins/morris/morris-data.js"></script>
+    
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>	
+	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/ajaxControl.js" type="text/javascript"></script>
+	
+	<link href="${pageContext.request.contextPath}/resources/bootstrap/datepicker/css/datepicker3.css"
+	rel="stylesheet" type="text/css" />
+	<script	src="${pageContext.request.contextPath}/resources/bootstrap/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script	src="${pageContext.request.contextPath}/resources/bootstrap/datepicker/js/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
 	
 </head>
 
@@ -72,16 +92,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="/springbank/agencia/">Agencias</a>
+                                <a href="javascript:;" onclick="ajaxGet('/springbank/agencia/')">Agencias</a>
                             </li> 
                             <li>
-                                <a href="/springbank/cliente/">Clientes</a>
+                                <a href="javascript:;" onclick="ajaxGet('/springbank/cliente/')">Clientes</a>
                             </li>    
                             <li>
-                                <a href="/springbank/gerente/">Gerentes</a>
+                                <a href="javascript:;" onclick="ajaxGet('/springbank/gerente/')">Gerentes</a>
                             </li> 
                             <li>
-                                <a href="/springbank/usuario/">Usuários</a>
+                                <a href="javascript:;" onclick="ajaxGet('/springbank/usuario/')">Usuários</a>
                             </li>                          	                    
                         </ul>
                     </li>                  
@@ -104,21 +124,4 @@
 	
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins/morris/raphael.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins/morris/morris.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources//bootstrap/js/plugins/morris/morris-data.js"></script>
-    
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>	
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/ajaxControl.js" type="text/javascript"></script>
 

@@ -1,3 +1,17 @@
+<script type="text/javascript">
+	$(document).ready(function () {
+	
+	    $('#formGerente').submit(function (e) {
+	
+	        $.post('/springbank/gerente/salvar', $(this).serialize(), function(data) {
+	        	$( ".view_principal" ).html( data );
+	        });
+	
+	        return false;
+	    });
+	
+	});
+</script>
 
 <div id="container-large">
 	<ul class="nav nav-tabs">
@@ -11,8 +25,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<form id="formGerente" class="form-horizontal" role="form"
-				action="/springbank/gerente/salvar" method="post">
+			<form id="formGerente" class="form-horizontal" role="form" method="post">
 
 				<div class="form-group">
 					<label for="lbnome" class="col-sm-2 control-label">Nome</label>
@@ -85,8 +98,8 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" value="button.back" class="btn btn-default"
-							onclick="document.location = '/springbank/gerente/'">Cancelar</button>
-						<button type="submit" class="btn btn-default">Salvar</button>
+							onclick="ajaxGet('/springbank/gerente/')">Cancelar</button>
+						<input id="submit" class="btn btn-default" type="submit" value="Salvar">
 					</div>
 				</div>
 			</form>

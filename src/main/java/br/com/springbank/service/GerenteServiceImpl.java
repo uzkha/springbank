@@ -70,7 +70,7 @@ public class GerenteServiceImpl implements GerenteService {
 		List<Gerente> gerentes = gerenteDao.buscarCpfIdDiferente(gerente);
 
 		if (gerentes.size() > 0) {
-			throw new ServiceException("Já existe um gerente com o mesmo nome");
+			throw new ServiceException("Já existe um gerente com o mesmo CPF");
 		}
 
 	}
