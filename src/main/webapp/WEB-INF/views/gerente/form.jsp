@@ -84,8 +84,7 @@
 				<input type="hidden" name="id" value="${gerente.id}">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" value="button.back" class="btn btn-default"
-							onclick="ajaxGet('/springbank/gerente/')">Cancelar</button>
+						<a class="btn btn-default" href="/springbank/gerente/">Cancelar</a>
 						<input id="submit" class="btn btn-default" type="submit" value="Salvar">
 					</div>
 				</div>

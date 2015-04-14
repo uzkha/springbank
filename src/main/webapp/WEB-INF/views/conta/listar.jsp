@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a href="javascript:;" onclick="ajaxGet('/springbank/conta/adicionar')"><img
+			<a href="/springbank/conta/adicionar"><img
 				src="${pageContext.request.contextPath}/resources/img/add.png"
 				width="24" height="24" data-toggle="tooltip"
 				title="Adicionar Conta"></a>
@@ -29,7 +29,7 @@
 						<td>${conta.saldo}</td>
 						<td>${conta.limite}</td>
 
-						<td><a href="javascript:;" onclick="ajaxGet('/springbank/conta/editar/${conta.id}')"><img
+						<td><a href="/springbank/conta/editar/${conta.id}"><img
 								src="${pageContext.request.contextPath}/resources/img/update.png"
 								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
 						</td>

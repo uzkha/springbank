@@ -26,8 +26,7 @@
 				<input type="hidden" name="id" value="${agencia.id}">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">						
-						<button type="button" value="button.back" class="btn btn-default"
-							onclick="document.location = '/springbank/agencia/'">Cancelar</button>
+						<a class="btn btn-default" href="/springbank/agencia/">Cancelar</a>
 						<button type="submit" class="btn btn-default">Salvar</button>
 					</div>
 				</div>

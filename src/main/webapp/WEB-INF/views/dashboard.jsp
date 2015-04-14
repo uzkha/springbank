@@ -43,14 +43,11 @@
 	<script	src="${pageContext.request.contextPath}/resources/bootstrap/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
 	<script	src="${pageContext.request.contextPath}/resources/bootstrap/datepicker/js/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
 	
-	
-	
 	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 	<script	src="${pageContext.request.contextPath}/resources/js/jquery-validation/dist/localization/messages_pt_BR.min.js" type="text/javascript"></script>
 	
-	<script src="${pageContext.request.contextPath}/resources/js/ajaxControl.js" type="text/javascript"></script>
->
-
+	<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
+	
 <div id="div-componente-sim-nao" class="modal fade">
 	-
 	<div class="modal-dialog modal-sm">
@@ -124,25 +121,25 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="javascript:;" onclick="ajaxGet('/springbank/transacao/')"><i class="glyphicon glyphicon-usd"></i> Transações</a>
+                        <a href="/springbank/transacao/"><i class="glyphicon glyphicon-usd"></i> Transações</a>
                     </li>
                     <li>
-                        <a href="javascript:;" onclick="ajaxGet('/springbank/conta/')"><i class="fa fa-fw fa-bar-chart-o"></i> Contas</a>
+                        <a href="/springbank/conta/"><i class="fa fa-fw fa-bar-chart-o"></i> Contas</a>
                     </li>   
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="javascript:;" onclick="ajaxGet('/springbank/agencia/')">Agencias</a>
+                                <a href="/springbank/agencia/">Agencias</a>
                             </li> 
                             <li>
-                                <a href="javascript:;" onclick="ajaxGet('/springbank/cliente/')">Clientes</a>
+                                <a href="/springbank/cliente/">Clientes</a>
                             </li>    
                             <li>
-                                <a href="javascript:;" onclick="ajaxGet('/springbank/gerente/')">Gerentes</a>
+                                <a href="/springbank/gerente/">Gerentes</a>
                             </li> 
                             <li>
-                                <a href="javascript:;" onclick="ajaxGet('/springbank/usuario/')">Usuários</a>
+                                <a href="/springbank/usuario/">Usuários</a>
                             </li>                          	                    
                         </ul>
                     </li>                  

@@ -343,3 +343,27 @@ function deleteItem(event, descricao, link){
 	
 	confirmDelete(descricao, simFunction, naoFunction);
 }
+
+//captura requisicao com link para envio via GET ajax
+$(document).ready(function() {
+	
+	$("a").on("click", function() {		
+		
+		//le valor url para ser enviado
+		var url = $(this).attr('href');
+		
+		if(url !== "javascript:;"){
+			//requisicao via GET ajax
+			$.get(url)
+			.done(function(data) {
+				$( ".view_principal" ).html( data );
+			});		
+			
+			//return falso para requisicao nao ir via get
+			return false;
+			
+		}else{
+			return true; //deixa link seguir
+		}
+	});
+});
