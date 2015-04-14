@@ -101,7 +101,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $base_url;?>">Spring Bank</a>
+                <a class="navbar-brand" href="/springbank/home/">Spring Bank</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -153,7 +153,6 @@
             <div class="container-fluid principal">
 				<!-- carrega a pagina enviada pelo controller -->
 				<div class="view_principal">
-					
 					
 				</div>
             </div>

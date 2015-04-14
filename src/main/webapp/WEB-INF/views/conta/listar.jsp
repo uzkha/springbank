@@ -34,7 +34,7 @@
 								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
 						</td>
 
-						<td><a href="#"
+						<td><a href="javascript:;"
 							onclick="deleteItem(event, '${conta.id}', '/springbank/conta/deletar/${conta.id}')"><img
 								src="${pageContext.request.contextPath}/resources/img/delete.png"
 								height="18" data-toggle="tooltip" title="Excluir"></a></td>

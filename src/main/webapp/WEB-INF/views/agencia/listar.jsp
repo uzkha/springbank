@@ -30,7 +30,7 @@
 								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
 						</td>
 
-						<td><a href="#"
+						<td><a href="javascript:;"
 							onclick="deleteItem(event, '${agencia.nome}', '/springbank/agencia/deletar/${agencia.id}')"><img
 								src="${pageContext.request.contextPath}/resources/img/delete.png"
 								height="18" data-toggle="tooltip" title="Excluir"></a></td>

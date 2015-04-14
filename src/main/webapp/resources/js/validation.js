@@ -357,13 +357,23 @@ $(document).ready(function() {
 			$.get(url)
 			.done(function(data) {
 				$( ".view_principal" ).html( data );
-			});		
-			
+			});			
 			//return falso para requisicao nao ir via get
 			return false;
 			
 		}else{
 			return true; //deixa link seguir
 		}
+	});
+	
+	
+	//carregamento da aplicacao ou refresh
+	//seta a home via ajax
+	$(window).on('load', function(){
+		var url = "/springbank/home";
+		$.get(url)
+		.done(function(data) {
+			$( ".view_principal" ).html( data );
+		});	
 	});
 });
