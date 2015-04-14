@@ -1,18 +1,4 @@
-<script type="text/javascript">
-	$(document).ready(function () {
-	
-	    $('#formGerente').submit(function (e) {
-	
-	        $.post('/springbank/gerente/salvar', $(this).serialize(), function(data) {
-	        	$( ".view_principal" ).html( data );
-	        });
-	
-	        return false;
-	    });
-	
-	});
-</script>
-
+<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
 <div id="container-large">
 	<ul class="nav nav-tabs">
 		<li role="presentation"><a href="/springbank/gerente/">Inicio</a></li>

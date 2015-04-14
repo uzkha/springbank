@@ -98,6 +98,25 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#formGerente").validate({
+    	
+  	   //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/gerente/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
+    	
         // Define as regras
         rules: {
             nome: {
@@ -106,7 +125,7 @@ $(document).ready(function () {
             },                       
             cpfCnpj: {
                 // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
-                required: true, minlength: 11, maxlenght: 11
+                required: true,
             },
             email: {
                 // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
@@ -133,15 +152,18 @@ $(document).ready(function () {
                 required: true, 
 
             },
+            
         },
+       
     });
 
 });
 
 $(document).ready(function () {
-    $("#formCliente").validate({
+    $("#formCliente").validate({       	    	
         // Define as regras
         rules: {
+        	        	
             nome: {
                 // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
                 required: true, minlength: 3
@@ -168,6 +190,7 @@ $(document).ready(function () {
             },
        
         },
+    
     });
 
 });
