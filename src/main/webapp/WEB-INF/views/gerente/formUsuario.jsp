@@ -1,4 +1,5 @@
-
+<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<ul class="nav nav-tabs">
 		<li role="presentation"><a href="/springbank/gerente/">Inicio</a></li>
