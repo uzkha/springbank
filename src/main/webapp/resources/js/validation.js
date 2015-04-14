@@ -1,5 +1,24 @@
 $(document).ready(function () {
     $("#formAgencia").validate({
+    	
+    	 //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/agencia/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
+    	
         // Define as regras
         rules: {
             "nome": {
@@ -17,6 +36,25 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#formUsuario").validate({
+    	
+    	 //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/usuario/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
+    	
         // Define as regras
         rules: {
             login: {
@@ -39,6 +77,24 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#formTransacao").validate({
+    	
+    	 //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/transacao/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
         // Define as regras
         rules: {
             contaId: {
@@ -66,6 +122,25 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#formConta").validate({
+    	
+    	 //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/conta/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
+    	
         // Define as regras
         rules: {
             clienteId: {
@@ -74,7 +149,7 @@ $(document).ready(function () {
             },                       
             gerenteId: {
                 // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
-                required: true, minlength: 5
+                required: true,
             },
             agenciaId: {
                 // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
@@ -160,7 +235,26 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#formCliente").validate({       	    	
+    $("#formCliente").validate({    
+    	
+    	 //envia o formulario via ajax
+        submitHandler: function(form){
+        	
+			var dados = $( form ).serialize();      
+			
+			$.ajax({
+				type: "POST",
+				url: "/springbank/cliente/salvar",
+				data: dados,
+				success: function( data )
+				{
+					$( ".view_principal" ).html( data );
+				}
+			});
+
+			return false;
+		},
+    	
         // Define as regras
         rules: {
         	        	

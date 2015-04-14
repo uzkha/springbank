@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a href="/springbank/transacao/adicionar"><img
+			<a href="javascript:;" onclick="ajaxGet('/springbank/transacao/adicionar')"><img
 				src="${pageContext.request.contextPath}/resources/img/add.png"
 				width="24" height="24" data-toggle="tooltip"
 				title="Adicionar Transacao"></a>
@@ -42,7 +42,7 @@
 						</td>
 
 						<td><a
-							href="/springbank/transacao/visualizar/${transacao.id}"><img
+							href="javascript:;" onclick="ajaxGet('/springbank/transacao/visualizar/${transacao.id}')"><img
 								src="${pageContext.request.contextPath}/resources/img/visualizar.png"
 								width="18" height="18" data-toggle="tooltip" title="Visualizar"></a>
 						</td>
