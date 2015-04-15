@@ -59,7 +59,7 @@
 				<input type="hidden" name="id" value="${usuario.id}">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<a class="btn btn-default" href="/springbank/usuario/">Cancelar</a>
+						<a class="btn btn-default" onclick="ajaxGet('/springbank/usuario/')" href="javascript:;">Cancelar</a>
 						<button type="submit" class="btn btn-default">Salvar</button>
 					</div>
 				</div>

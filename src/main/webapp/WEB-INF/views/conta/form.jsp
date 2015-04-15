@@ -81,7 +81,7 @@
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<a class="btn btn-default" href="/springbank/conta/">Cancelar</a>
+						<a class="btn btn-default" onclick="ajaxGet('/springbank/conta/')" href="javascript:;">Cancelar</a>
 						<input id="submit" class="btn btn-default" type="submit" value="Salvar">
 					</div>
 				</div>

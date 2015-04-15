@@ -6,10 +6,11 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a href="/springbank/usuario/adicionar"><img
+			<a onclick="ajaxGet('/springbank/usuario/adicionar')" href="javascript:;"><img
 				src="${pageContext.request.contextPath}/resources/img/add.png"
 				width="24" height="24" data-toggle="tooltip"
-				title="Adicionar Usuário"></a>
+				title="Adicionar Usuário"
+				class="ajaxGet"></a>
 
 			<table class="table table-striped table-hover">
 				<tr>
@@ -24,7 +25,7 @@
 						<td>${usuario.login}</td>
 						
 
-						<td><a href="/springbank/usuario/editar/${usuario.id}"><img
+						<td><a onclick="ajaxGet('/springbank/usuario/editar/${usuario.id}')" href="javascript:;"><img
 								src="${pageContext.request.contextPath}/resources/img/update.png"
 								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
 						</td>

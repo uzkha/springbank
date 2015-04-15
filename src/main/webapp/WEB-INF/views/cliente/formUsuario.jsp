@@ -2,11 +2,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<ul class="nav nav-tabs">
-		<li role="presentation"><a href="/springbank/cliente/">Inicio</a></li>
-		<li role="presentation"><a
-			href="/springbank/cliente/editar/${cliente.id}">Cliente</a></li>
-		<li role="presentation" class="active"><a
-			href="/springbank/cliente/usuario/${cliente.id}">Usuário</a></li>
+		<li role="presentation"><a onclick="ajaxGet('/springbank/cliente/')" href="javascript:;">Inicio</a></li>
+		<li role="presentation"><a onclick="ajaxGet('/springbank/cliente/editar/${cliente.id}')"
+			href="javascript:;">Cliente</a></li>
+		<li role="presentation" class="active"><a onclick="ajaxGet('/springbank/cliente/usuario/${cliente.id}')"
+			href="javascript:;">Usuário</a></li>
 	</ul>
 
 	<div class="panel panel-default">
@@ -72,7 +72,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" value="button.back" class="btn btn-default"
-							onclick="document.location = '/springbank/cliente/editar/${cliente.id}'">Cancelar</button>
+							onclick="ajaxGet('/springbank/cliente/editar/${cliente.id}')">Cancelar</button>
 						<button type="submit" class="btn btn-default">Salvar</button>
 					</div>
 				</div>

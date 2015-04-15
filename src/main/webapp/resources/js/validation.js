@@ -344,15 +344,32 @@ function deleteItem(event, descricao, link){
 	confirmDelete(descricao, simFunction, naoFunction);
 }
 
+function ajaxGet(url){
+		
+	//ajax via get
+	$.get(url)
+	.done(function(data) {
+		$( ".view_principal" ).html( data ); // carrega a view principal do sistema
+	});	
+	
+	//retorna false para nao prosseguir o envio do link via get padrao HTML
+	return false;
+	
+}
+
 //captura requisicao com link para envio via GET ajax
 $(document).ready(function() {
 	
-	$("a").on("click", function() {		
-		
+	/*$("a").on("click", function() {		
+	//$(".ajaxGet").on("click", function() {
 		//le valor url para ser enviado
-		var url = $(this).attr('href');
+		//var self = $(this).attr('href');
 		
-		if(url !== "javascript:;"){
+		var self = $(this);
+		var url  = self.attr('href');
+		
+		
+		//if(url !== "javascript:;"){
 			//requisicao via GET ajax
 			$.get(url)
 			.done(function(data) {
@@ -361,12 +378,12 @@ $(document).ready(function() {
 			//return falso para requisicao nao ir via get
 			return false;
 			
-		}else{
-			return true; //deixa link seguir
-		}
-	});
+		//}else{
+	//		return true; //deixa link seguir
+		//}
+	});*/
 	
-	
+
 	//carregamento da aplicacao ou refresh
 	//seta a home via ajax
 	$(window).on('load', function(){

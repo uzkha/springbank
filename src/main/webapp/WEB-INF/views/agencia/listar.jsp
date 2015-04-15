@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a href="/springbank/agencia/adicionar"><img
+			<a onclick="ajaxGet('/springbank/agencia/adicionar')" href="javascript:;"><img
 				src="${pageContext.request.contextPath}/resources/img/add.png"
 				width="24" height="24" data-toggle="tooltip"
 				title="Adicionar Agencia"></a>
@@ -25,7 +25,7 @@
 						<td>${agencia.nome}</td>
 						<td>${agencia.cidade}</td>
 
-						<td><a href="/springbank/agencia/editar/${agencia.id}"><img
+						<td><a onclick="ajaxGet('/springbank/agencia/editar/${agencia.id}')" href="javascript:;"><img
 								src="${pageContext.request.contextPath}/resources/img/update.png"
 								width="18" height="18" data-toggle="tooltip" title="Editar"></a>
 						</td>

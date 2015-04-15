@@ -2,9 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<ul class="nav nav-tabs">
-	<li role="presentation"><a href="/springbank/cliente/">Inicio</a></li>
+	<li role="presentation"><a onclick="ajaxGet('/springbank/cliente/')" href="javascript:;">Inicio</a></li>
 	<li role="presentation" class="active"><a href="#">Cliente</a></li>
-	<li role="presentation"><a href="/springbank/cliente/usuario/${cliente.id}">Usuário</a></li>
+	<li role="presentation"><a onclick="ajaxGet('/springbank/cliente/usuario/${cliente.id}')" href="javascript:;">Usuário</a></li>
 </ul>
 	<div class="panel panel-default">
 		<div class="panel-heading">Manuteção Cliente</div>
@@ -81,7 +81,7 @@
 				<input type="hidden" name="id" value="${cliente.id}">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<a class="btn btn-default" href="/springbank/cliente/">Cancelar</a>
+						<a class="btn btn-default" onclick="ajaxGet('/springbank/cliente/')" href="javascript:;">Cancelar</a>
 						<button type="submit" class="btn btn-default">Salvar</button>
 					</div>
 				</div>
