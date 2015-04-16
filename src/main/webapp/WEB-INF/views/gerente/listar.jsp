@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="error">${message}</div>
 
-			<a onclick="ajaxGet('/springbank/gerente/adicionar')" href="javascript:;"><img
+			<a onclick="ajaxGet('/springbank/gerentes/adicionar')" href="javascript:;"><img
 				src="${pageContext.request.contextPath}/resources/img/add.png"				
 				width="24" height="24" data-toggle="tooltip"
 				title="Adicionar Gerente"></a>

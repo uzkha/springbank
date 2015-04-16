@@ -327,6 +327,19 @@ function show(titulo, mensagem, simFunction, naoFunction, simMensagem, naoMensag
 	
 }
 
+function showError(mensagem, naoFunction) {
+	
+	$('#p-componente-falha-requisicao-mensagem').html(mensagem);
+	
+	$('#btn-componente-falha-requisicao-nao').unbind('click');
+	
+	$('#btn-componente-falha-requisicao-nao').click(naoFunction);
+			
+	$('#div-componente-falha-requisicao').modal('toggle');
+	
+}
+
+
 function confirmDelete(descricaoItem, simFunction, naoFunction) {
 	titulo = 'Confirmar';
 	mensagem = 'Excluir: ' + ' <span style="font-weight: bold;">' + descricaoItem +'</span>?';
@@ -352,9 +365,28 @@ function ajaxGet(url){
 		
 	//ajax via get
 	$.get(url)
+	
+	.fail(function(data) {
+		//alert(data.responseText);
+		
+		if (data.status === 404){
+			var mensagem ="<strong>Error 404</strong><br><br>" + "Página: <strong>" + url + "</strong> não encontrada.";
+		}else{		
+			var mensagem = data.responseText;
+		}
+		
+		var naoFunction = function() {
+			return;
+		};		
+		//mostra modal com erro
+		showError(mensagem, naoFunction);
+		
+	}) // fim fail
+	
 	.done(function(data) {
 		$( ".view_principal" ).html( data ); // carrega a view principal do sistema
-	});	
+	});
+
 	
 	//retorna false para nao prosseguir o envio do link via get padrao HTML
 	return false;
