@@ -1,4 +1,6 @@
-<script src="${pageContext.request.contextPath}/resources/js/validation.js" type="text/javascript"></script>
+<!-- chama pagina que contem o carregamento das bibliotecas -->
+
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container-large">
 	<div class="panel panel-default">
@@ -42,4 +44,3 @@
 		</div>
 	</div>
 </div>
-<jsp:include page="../footer.jsp" />

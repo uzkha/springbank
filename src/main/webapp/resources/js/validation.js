@@ -290,6 +290,7 @@ $(document).ready(function () {
 });
 
 function show(titulo, mensagem, simFunction, naoFunction, simMensagem, naoMensagem) {
+	
 	$('#h-componente-sim-nao-titulo').html(titulo);
 	$('#p-componente-sim-nao-mensagem').html(mensagem);
 	if (simMensagem != null)
@@ -297,12 +298,14 @@ function show(titulo, mensagem, simFunction, naoFunction, simMensagem, naoMensag
 	if (naoMensagem != null)
 		$('#btn-componente-sim-nao-nao').html(naoMensagem);
 	
-	simFunctionInternal = function() {
+	
+	simFunctionInternal = function() {		
 		$('#div-componente-sim-nao').modal('toggle');
 	};
 	
 	$('#btn-componente-sim-nao-sim').unbind('click');
 	$('#btn-componente-sim-nao-sim').click(simFunctionInternal);
+	
 	if (simFunction != null)
 		$('#btn-componente-sim-nao-sim').click(simFunction);
 	
@@ -332,9 +335,10 @@ function confirmDelete(descricaoItem, simFunction, naoFunction) {
 
 function deleteItem(event, descricao, link){
 	event.preventDefault();
-	
+		
 	simFunction = function() {
-		window.location.href = link;
+		//window.location.href = link;
+		ajaxGet(link);
 	};
 	
 	naoFunction = function() {

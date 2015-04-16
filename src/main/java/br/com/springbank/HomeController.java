@@ -57,9 +57,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public ModelAndView home(Locale locale, Model model) {
 		
-		return "home";
+		ModelAndView modelView = new ModelAndView();
+		
+		modelView.setViewName("home");
+		return modelView;
+		
+		//return "home";
 	}
 	
 }
